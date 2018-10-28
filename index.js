@@ -18,13 +18,16 @@ module.exports = options => handler => (req, res, ...restArgs) => {
   if (!instance.logger) {
     instance.logger = logger;
   }
-  const headerName = options.headerName || 'x-request-id';
-  const id = req.headers[headerName] || uuid.v4();
+  const headerNameForRequest = options.headerNameForRequest || 'x-request-id';
+  const headerNameForCorrelation = options.headerNameForCorrelation || 'x-correlation-id';
+  const requestId = req.headers[headerNameForRequest] || uuid.v4();
+  const correlationId = req.headers[headerNameForCorrelation] || requestId;
 
-  res.setHeader(headerName, id);
+  res.setHeader(headerNameForRequest, requestId);
+  res.setHeader(headerNameForCorrelation, correlationId);
 
   logger.log({
-    message: `Request ${id} started...`,
+    message: `Request ${requestId} started...`,
     req
   });
 
@@ -33,7 +36,7 @@ module.exports = options => handler => (req, res, ...restArgs) => {
   res.on('finish', () => {
     const diff = process.hrtime(time);
     logger.log({
-      message: `Request ${id} ended.`,
+      message: `Request ${requestId} ended.`,
       duration: (diff[0] * 1e3) + (diff[1] * 1e-6),
       res
     });
