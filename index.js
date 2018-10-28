@@ -2,8 +2,22 @@
 
 const uuid = require('uuid');
 
+const instance = {};
+const closeLogger = () => {
+  if (instance.logger && !instance.logger.closed) {
+    instance.logger.close();
+  }
+};
+
+process.on('SIGINT', closeLogger);
+process.on('SIGTERM', closeLogger);
+process.on('exit', closeLogger);
+
 module.exports = options => handler => (req, res, ...restArgs) => {
   const {logger} = options;
+  if (!instance.logger) {
+    instance.logger = logger;
+  }
   const headerName = options.headerName || 'x-request-id';
   const id = req.headers[headerName] || uuid.v4();
 
