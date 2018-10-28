@@ -1,6 +1,6 @@
 {
   "name": "micro-logzio",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A middleware for micro framework that logs requests and responses using logz.io service.",
   "main": "index.js",
   "scripts": {
