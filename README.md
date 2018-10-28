@@ -13,7 +13,8 @@ const logger = logzio.createLogger({
 });
 const reqLogger = microLogzio({
   logger,
-  headerName: 'x-request-id'
+  headerNameForRequest: 'x-request-id', // Optional, default is 'x-request-id'
+  headerNameForCorrelation: 'x-correlation-id' // Optional, default is 'x-correlation-id'
 });
 
 module.exports = reqLogger(async (req, res) => `Hello world`);
