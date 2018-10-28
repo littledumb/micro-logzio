@@ -1,0 +1,34 @@
+{
+  "name": "micro-logzio",
+  "version": "0.1.0",
+  "description": "A middleware for micro framework that logs requests and responses using logz.io service.",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/littledumb/micro-logzio.git"
+  },
+  "keywords": [
+    "microservice",
+    "middleware",
+    "log",
+    "logz.io"
+  ],
+  "author": "Jiamin Zhao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/littledumb/micro-logzio/issues"
+  },
+  "homepage": "https://github.com/littledumb/micro-logzio#readme",
+  "dependencies": {
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "xo": "^0.23.0"
+  },
+  "xo": {
+    "space": true
+  }
+}
