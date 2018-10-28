@@ -5,7 +5,7 @@ A middleware for micro framework that logs requests and responses using logz.io 
 
 ```
 const logzio = require('logzio-nodejs');
-const microLogzio = require('./micro-logzio');
+const microLogzio = require('micro-logzio');
 
 const logger = logzio.createLogger({
   token: {{your logz.io token}},
