@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/littledumb/micro-logzio#readme",
   "dependencies": {
+    "cls-hooked": "^4.2.2",
+    "logzio-nodejs": "^0.4.16",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
